@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+public class Ismagicsquare {
+
+	public static void main(String[] args) 
+	{
+		int i = 0 , j = 0;
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the value of N : ");
+		int input = sc.nextInt();
+		int N = validate(input);
+	
+		
+		int a[][] = new int[N][N];
+
+		System.out.println("Enter the elements of the matrix : "); //gives the values in the array
+		for (i = 0 ; i < N ; i++)
+		{
+			for( j = 0 ; j < N ; j++ )
+			{
+				a[i][j] = sc.nextInt();
+			}
+			System.out.println("\n");
+		}
+	
+		 if (isMagicSquare(a,N) == true ) 
+	            System.out.println("Magic Square"); 
+	        else
+	            System.out.println("Not a magic" + 
+	                                    " Square"); 
+
+	}
+
+	
+	
+	
+	
+	
+static boolean isMagicSquare(int arr[][] ,int N ) 
+    { 
+          
+        
+         int sum = 0, sum2=0;  
+        for (int i = 0; i < N; i++) 			//main diogonal
+            sum = sum + arr[i][i]; 
+  
+         
+        for (int i = 0; i < N; i++) 			//second diogonal
+            sum2 = sum2 + arr[i][N-1-i]; 
+  
+        if(sum!=sum2)  
+            return false; 
+  
+        
+        for (int i = 0; i < N; i++)				//row sum
+        { 										
+        	int rowSum = 0; 
+            for (int j = 0; j < N; j++) 
+                rowSum += arr[i][j]; 
+  
+
+            if (rowSum != sum) 
+                return false; 
+        } 
+        
+        
+        for (int i = 0; i < N; i++)
+        { 
+        	  
+            int colSum = 0; 
+            for (int j = 0; j < N; j++) 
+                colSum += arr[j][i]; 
+  
+            
+            if (sum != colSum) 
+                return false; 
+        } 
+        
+        return true;
+        
+}
+
+
+public static int validate(int n)
+{
+	Scanner sc= new Scanner(System.in);
+	boolean invalid = true;
+	while (invalid)
+	{
+	if( n <= 0 )
+	{
+		System.out.println("Please enter a positive number. . . !!!!");
+		n = sc.nextInt();
+	}
+	else
+	{
+		invalid = false;
+	}
+	
+	}
+	return n;
+}
+
+
+}
