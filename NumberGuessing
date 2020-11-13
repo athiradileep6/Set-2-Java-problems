@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+public class GuessNumber {
+
+	public static void main(String[] args) {
+		
+		Numbergame();
+		
+
+	}
+
+public static void Numbergame()
+{
+	Scanner sc = new Scanner(System.in);
+	
+	int random = (int)(Math.random()*100);
+	
+	System.out.print("Enter the no of trials you want: ");
+	int n = sc.nextInt();
+	int limit = validate(n);
+	
+	int i = 0 , count = 0;
+	while(i<limit)
+	{
+		System.out.println("Please enter your guess:");
+		int guess = sc.nextInt();
+		count++;
+		
+		if(guess == random)
+		{
+			System.out.println("You win..You guessed correctly!!");
+			System.out.println("No of guesses" + count);
+			break;
+		}
+		else if(guess > random)
+		{
+			System.out.println("Too high..");
+		}
+		else
+			System.out.println("Too low..");
+		
+		i++;
+	}
+	System.out.println("No more chances..!!The correct number is "+ random);
+	System.out.println("you took "+ count + " chances");
+	
+	}
+
+
+
+public static int validate(int n)
+{
+	
+	Scanner sc= new Scanner(System.in);
+	boolean invalid = true;
+	while (invalid)
+	{
+	if( n <= 0 )
+	{
+		System.out.println("Please enter a positive number. . . !!!!");
+		n = sc.nextInt();
+	}
+	else
+	{
+		invalid = false;
+	}
+	
+	}
+	return n;
+	
+}
+
+	
+}
