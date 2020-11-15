@@ -1,0 +1,100 @@
+import java.util.Scanner;
+
+public class Rowmagic {
+
+	static Rowmagic obj = new Rowmagic();
+	
+		public static void main(String[] args) {
+			int i = 0 , j = 0;
+			
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the value of N and M: ");// N for rows and M foe columns
+			int input1 = sc.nextInt();
+			int input2 = sc.nextInt();
+			int N = validate(input1);
+			int M = validate(input2);
+			
+			int a[][] = new int[N][M];
+
+			System.out.println("Enter the elements of the matrix : "); //gives the values in the array
+			for (i = 0 ; i < N ; i++)
+			{
+				for( j = 0 ; j < M ; j++ )
+				{
+					a[i][j] = sc.nextInt();
+				}
+			}
+			
+		boolean result = obj.IsRowmagic(a,N,M);
+		if(result == true)
+		{
+			System.out.println("Yes...The given matrix is rowmagic !!");
+		}
+		else
+			System.out.println("The given matrix is not rowmagic...");
+		//System.out.println("The result is " + result);
+	}
+
+	
+public static boolean IsRowmagic(int[][] a,int N ,int M)
+{
+	int sum = 0 , i = 0 , flag = 0 , temp = 0;
+	
+	//for (int i = 0 ; i < N ; i++)
+	
+	
+	for( int j = 0 ; j < M ; j++ )    //sum of first row
+		{
+			sum = sum+ a[i][j];
+		}
+		
+		temp = sum;
+		
+	
+	
+	for (i = 1 ; i < N ; i++)
+	{
+		sum = 0;
+		for( int j = 0 ; j < M ; j++ )
+		{
+			sum = sum+ a[i][j];
+		}
+		
+		if(temp != sum )
+		{
+			flag = 1;
+			break;
+		}
+	}
+	
+	if(flag == 0)
+		return true;
+	else
+		return false;
+
+	
+	}
+		
+		
+		
+public static int validate(int n)
+		{
+			Scanner sc= new Scanner(System.in);
+			boolean invalid = true;
+			while (invalid)
+			{
+			if( n <= 0 )
+			{
+				System.out.println("Please enter a positive number. . . !!!!");
+				n = sc.nextInt();
+			}
+			else
+			{
+				invalid = false;
+			}
+			
+			}
+			return n;
+		}
+		
+}
