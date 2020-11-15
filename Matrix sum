@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+
+public class Matrixsum {
+	static Matrixsum obj = new Matrixsum();
+	
+	public static void main(String[] args) {
+		int i = 0 , j = 0;
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the value of N : ");
+		int input = sc.nextInt();
+		int N = validate(input);
+		
+		int a[][] = new int[N][N];
+		int b[][] = new int[N][N];
+		int c[][] = new int[N][N];
+		
+		System.out.println("Enter the elements of the first matrix : "); //gives the values in the array
+		for (i = 0 ; i < N ; i++)
+		{
+			for( j = 0 ; j < N ; j++ )
+			{
+				a[i][j] = sc.nextInt();
+			}
+		}
+		
+		System.out.println("Enter the elements of the second matrix : ");//gives the values in the array
+		
+		for (i = 0 ; i < N ; i++)
+		{
+			for( j = 0 ; j < N ; j++ )
+			{
+				b[i][j] = sc.nextInt();
+			}
+		}
+		
+		 c =  obj.ArraySum(a,b,N);
+		 System.out.println("The sum of matrices are :");
+		 for (i = 0 ; i < N ; i++)
+			{
+				for( j = 0 ; j < N ; j++ )
+				{
+					 System.out.print( " " + c[i][j]);
+				}
+				 System.out.print("\n");
+			}
+
+	}
+
+	
+	
+	
+public static int[][] ArraySum( int a[][] , int b[][] , int N)
+{
+	int i = 0 , j = 0;
+	int c[][] = new int[N][N];
+	for (i = 0 ; i < N ; i++)
+	{
+		for( j = 0 ; j < N ; j++ )
+		{
+			c[i][j] = a[i][j] + b[i][j];
+		}
+	}
+	
+	return c;
+	}
+
+
+
+public static int validate(int n)
+{
+	Scanner sc= new Scanner(System.in);
+	boolean invalid = true;
+	while (invalid)
+	{
+	if( n <= 0 )
+	{
+		System.out.println("Please enter a positive number. . . !!!!");
+		n = sc.nextInt();
+	}
+	else
+	{
+		invalid = false;
+	}
+	
+	}
+	return n;
+}
+}
