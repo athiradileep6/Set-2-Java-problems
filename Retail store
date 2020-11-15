@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+
+public class Retailstore
+{
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args)
+		{
+			int[] id= new int[] {5001,5002,5003,5004,5005,5006,5007,5008};
+			int[] price= new int[] {1000,2000,4000,3000,6000,4000,2000,4500};
+			
+			System.out.println("enter the customer id :");
+			int cust_id = sc.nextInt();
+			System.out.println("enter the item to purchase");
+			int item = sc.nextInt();
+			int billid=0;
+			int count=0;
+			int totalbuildamount=0;
+
+			while(item > 0)
+			{
+				for(int i = 0;i<id.length;i++)
+				{
+					if(id[i] == item)
+					{
+						System.out.println("Enter the quantity you want to purchase ");
+						count = count+1;
+						int quant = sc.nextInt();
+						int billamount = price[i]*quant;
+						billid =billid + 1;
+						
+						totalbuildamount = billamount + totalbuildamount;
+						System.out.println("customer id\t\t"+cust_id);
+						System.out.println("Bill id\t\t\t"+billid+"\n"+"Purchased id\t\t"+id[i]+"\n"+"Quantity purchased\t"+quant);
+						System.out.println("totalbuildamount\t"+totalbuildamount);
+					}
+
+/*if(i == item)
+{
+System.out.println("Sorry!item is not found ");
+}*/
+}
+System.out.println("Do you want to purchase another item ??");
+int check = sc.nextInt();
+if(check == 1)
+{
+System.out.println("enter the item to purchase");
+item = sc.nextInt();
+}
+else
+	item = -1;
+
+}
+}
+}
+
